@@ -104,24 +104,25 @@ int main() {
     int cantidad = cargarPeliculas("reproducciones_netflix.csv", peliculas);
 
     if (cantidad == 0) {
-        std::cerr << "No se pudieron cargar las películas.\n";
+        std::cerr << "No se pudieron cargar las peliculas.\n";
         return 1;
     }
 
     int opcion;
     do {
         std::cout << "\n--- Menu de Consultas ---\n";
-        std::cout << "1 - Buscar por título\n";
+        std::cout << "1 - Buscar por titulo\n";
         std::cout << "2 - Listar por cantidad de reproducciones (descendente)\n";
-        std::cout << "3 - Listar alfabéticamente por título\n";
+        std::cout << "3 - Listar alfabeticamente por titulo\n";
+        std::cout << "4 - Mostrar peliculas\n";
         std::cout << "0 - Salir\n";
-        std::cout << "Seleccione una opción: ";
+        std::cout << "Seleccione una opcion: ";
         std::cin >> opcion;
         std::cin.ignore();
 
         if (opcion == 1) {
             char consulta[100];
-            std::cout << "Ingrese título a buscar: ";
+            std::cout << "Ingrese titulo a buscar: ";
             std::cin.getline(consulta, sizeof(consulta));
             buscarPorTitulo(peliculas, cantidad, consulta);
         } else if (opcion == 2) {
@@ -129,6 +130,8 @@ int main() {
             mostrarPeliculas(peliculas, cantidad);
         } else if (opcion == 3) {
             //ordenarPorTitulo(peliculas, cantidad);
+            mostrarPeliculas(peliculas, cantidad);
+        } else if (opcion == 4) {
             mostrarPeliculas(peliculas, cantidad);
         }
 
