@@ -46,7 +46,7 @@ int cargarPeliculas(const char* archivoNombre, Pelicula peliculas[]) {
 void buscarPorTitulo(Pelicula peliculas[], int cantidad, const char* consulta) {
     bool encontrado = false;
 
-    //TODO modificar para que encuentre ingresando solo parte del titulo
+    //TO DO modificar para que encuentre ingresando solo parte del titulo
 
     for (int i = 0; i < cantidad; ++i) {
         if (strstr(peliculas[i].titulo, consulta)) {
@@ -63,12 +63,34 @@ void buscarPorTitulo(Pelicula peliculas[], int cantidad, const char* consulta) {
 
 void ordenarPorReproducciones(Pelicula peliculas[], int cantidad) {
 //TODO implementar ordenamiento
+    Pelicula aux;
+    int i = 0, j;
+    bool ordenado = false;
+    while( i < cantidad && !ordenado ){
+        ordenado = true;
+        for( j=0; j < cantidad-i-1; j++ ){
+            if(peliculas[j].reproducciones > peliculas[j+1].reproducciones){
+                aux = peliculas[j];
+                peliculas[j] = peliculas[j+1];
+                peliculas[j+1] = aux;
+                ordenado = false;
+            }
+        }
+        i++;
+    }
 }
-
+/*
 void ordenarPorTitulo(Pelicula peliculas[], int cantidad) {
     //TODO implementar ordenamiento
+    Pelicula aux[MAX_PELICULAS];
+    for(int i=0;i<cantidad;i++){
+        aux[i] = peliculas[i];
+    }
+    for(int i=0;i<cantidad;i++){
+        std::cout<<aux[i].titulo;
+    }
 }
-
+*/
 void mostrarPeliculas(Pelicula peliculas[], int cantidad) {
     for (int i = 0; i < cantidad; ++i) {
         std::cout << peliculas[i].titulo << " (" << peliculas[i].anio << ", "
@@ -106,7 +128,7 @@ int main() {
             ordenarPorReproducciones(peliculas, cantidad);
             mostrarPeliculas(peliculas, cantidad);
         } else if (opcion == 3) {
-            ordenarPorTitulo(peliculas, cantidad);
+            //ordenarPorTitulo(peliculas, cantidad);
             mostrarPeliculas(peliculas, cantidad);
         }
 
