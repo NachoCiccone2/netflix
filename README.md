@@ -1,3 +1,3 @@
-Integrantes del equipo (máximo 4 integrantes):
-
+## Integrantes del equipo (máximo 4 integrantes):
+- Ciccone Ignacio
 
